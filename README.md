@@ -40,11 +40,12 @@ This app allows users to register, log in, update their profile, upload/remove t
 
 | Home | Cart |
 |:--------:|:--------:|
+| ![Home](assets/screens/home.png) | ![Cart](assets/screens/cart.png) |
 
-| ![Home](assets/screens/home.png) | ![Cart](assets/screens/cart.png) | 
 | Order | Profile |
-|:--------:| :--------:|
-![Order](assets/screens/orderhistory.png) | ![Profile](assets/screens/profile.png) | 
+|:--------:|:--------:|
+| ![Order](assets/screens/orderhistory.png) | ![Profile](assets/screens/profile.png) |
+
 
 ---
 
@@ -55,5 +56,7 @@ This app allows users to register, log in, update their profile, upload/remove t
 | ![ProductDetails](assets/screens/productdetails.png) | ![Checkout](assets/screens/checkout.png) | 
 | AcceptCkeckout |
 |:--------:|
-![AcceptCkeckout](assets/screens/acceptcheckout.png) |
+| ![AcceptCkeckout](assets/screens/acceptcheckout.png) |
+
+
 

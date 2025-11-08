@@ -30,23 +30,30 @@ This app allows users to register, log in, update their profile, upload/remove t
 | Splash | Login |
 |:------:|:------:|
 | ![Splash](assets/screens/splash.png) | ![Login](assets/screens/login.png) | 
+| SignUp |
+|:------:|
 ![Signup](assets/screens/signup.png) | 
 
 ---
 
 ### 🍕 Main Screens
 
-| Home | Cart | Order | Profile |
-|:--------:|:--------:|:--------:| :--------:|
+| Home | Cart |
+|:--------:|:--------:|
+
 | ![Home](assets/screens/home.png) | ![Cart](assets/screens/cart.png) | 
+| Order | Profile |
+|:--------:| :--------:|
 ![Order](assets/screens/orderhistory.png) | ![Profile](assets/screens/profile.png) | 
 
 ---
 
 ### 🛒 Checkout Flow
 
-| ProductDetails | Checkout | Order |
-|:--------:|:--------:|:--------:|
+| ProductDetails | Checkout |
+|:--------:|:--------:|
 | ![ProductDetails](assets/screens/productdetails.png) | ![Checkout](assets/screens/checkout.png) | 
+| AcceptCkeckout |
+|:--------:|
 ![AcceptCkeckout](assets/screens/acceptcheckout.png) |
 

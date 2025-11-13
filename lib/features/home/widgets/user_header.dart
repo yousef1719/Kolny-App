@@ -6,13 +6,16 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry_app/core/constants/app_colors.dart';
 import 'package:hungry_app/core/constants/size_config.dart';
+import 'package:hungry_app/features/auth/data/user_model.dart';
 import 'package:hungry_app/shared/custom_text.dart';
 
 class UserHeader extends StatelessWidget {
-  const UserHeader({super.key});
+  const UserHeader({super.key, this.userModel});
+  final UserModel? userModel;
 
   @override
   Widget build(BuildContext context) {
+    final image = userModel?.image;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -38,7 +41,12 @@ class UserHeader extends StatelessWidget {
         CircleAvatar(
           radius: screenHeight(context) * 0.035,
           backgroundColor: AppColors.primary,
-          child: Icon(CupertinoIcons.person, color: Colors.white),
+          backgroundImage: (image != null && image.isNotEmpty)
+              ? NetworkImage(image)
+              : null,
+          child: (image == null || image.isEmpty)
+              ? Icon(CupertinoIcons.person, color: Colors.white)
+              : null,
         ),
       ],
     );

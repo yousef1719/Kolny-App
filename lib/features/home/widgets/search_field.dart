@@ -16,7 +16,7 @@ class SearchField extends StatelessWidget {
         filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
         child: Container(
           decoration: BoxDecoration(
-            color: Color(0xFFFFF3E0).withOpacity(0.35),
+            color: Color(0xFFFFF3E0).withOpacity(0.225),
             borderRadius: BorderRadius.circular(25),
             border: Border.all(color: Colors.black12),
             boxShadow: [

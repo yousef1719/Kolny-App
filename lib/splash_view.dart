@@ -5,7 +5,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:hungry_app/core/constants/app_colors.dart';
 import 'package:hungry_app/core/constants/size_config.dart';
+import 'package:hungry_app/features/auth/data/auth_repo.dart';
 import 'package:hungry_app/features/auth/views/login_view.dart';
+import 'package:hungry_app/root.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -20,6 +22,32 @@ class _SplashViewState extends State<SplashView>
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
   late Animation<Offset> _slideAnimation;
+
+  AuthRepo authRepo = AuthRepo();
+
+  Future<void> _checkLogin() async {
+    try {
+      if (!mounted) return;
+      if (authRepo.isGuest) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const Root()),
+        );
+      } else if (authRepo.isLoggedIn) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const Root()),
+        );
+      } else {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const LoginView()),
+        );
+      }
+    } catch (e) {
+      print('Error from Splash: ${(e.toString())}');
+    }
+  }
 
   @override
   void initState() {
@@ -45,11 +73,9 @@ class _SplashViewState extends State<SplashView>
 
     _controller.forward();
 
-    Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const LoginView()),
-      );
+    Future.delayed(const Duration(seconds: 2), () async {
+      await authRepo.autoLogin();
+      await _checkLogin();
     });
   }
 

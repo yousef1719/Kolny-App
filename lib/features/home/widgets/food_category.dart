@@ -46,10 +46,11 @@ class _FoodCategoryState extends State<FoodCategory> {
                       ? AppColors.primary
                       : Color(0xFFE0E0E0),
                   borderRadius: BorderRadius.circular(20),
+                  border: Border.all(color: Colors.black12),
                 ),
                 padding: EdgeInsets.symmetric(
                   vertical: paddingVertical(context, 15),
-                  horizontal: paddingHorizontal(context, 30),
+                  horizontal: paddingHorizontal(context, 25),
                 ),
                 child: CustomText(
                   text: widget.category[index],

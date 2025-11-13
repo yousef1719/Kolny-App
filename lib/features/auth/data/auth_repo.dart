@@ -133,16 +133,18 @@ class AuthRepo {
       }
       if (response is Map<String, dynamic>) {
         final msg = response['message'];
-        final code = response['code'];
         final data = response['data'];
-        final coder = int.tryParse(code);
+        final code = response['code'];
+        final int coder = code is int
+            ? code
+            : int.tryParse(code.toString()) ?? 0;
 
         if (coder != 200 && coder != 201) {
-          throw ApiError(message: msg);
+          throw ApiError(message: msg ?? 'Unexpected error');
         }
-        final updateUser = UserModel.fromjson(data);
-        _currentUser = updateUser;
-        return updateUser;
+        final updatedUser = UserModel.fromjson(data);
+        _currentUser = updatedUser;
+        return updatedUser;
       } else {
         throw ApiError(message: 'Invalid error from here');
       }
@@ -167,12 +169,12 @@ class AuthRepo {
 
   /// auto login
 
-  Future<void> autoLogin() async {
+  Future<UserModel?> autoLogin() async {
     final token = await PrefHelper.getToken();
     if (token == null || token == 'guest') {
       isGuest = true;
       _currentUser = null;
-      return;
+      return null;
     }
     isGuest = false;
     try {
@@ -182,6 +184,7 @@ class AuthRepo {
       await PrefHelper.clearToken();
       isGuest = true;
       _currentUser = null;
+      return null;
     }
   }
 

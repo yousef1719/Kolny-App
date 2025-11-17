@@ -14,15 +14,22 @@ class OrderHistoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 0,
+        toolbarHeight: screenHeight(context) * 0.08,
         backgroundColor: AppColors.secondary,
         elevation: 0,
         scrolledUnderElevation: 0,
+        title: Center(
+          child: CustomText(
+            text: 'Order History',
+            fontSize: 18,
+            weight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth(context) * 0.04),
         child: ListView.builder(
-          padding: EdgeInsets.only(bottom: 120, top: 20),
+          padding: EdgeInsets.only(bottom: 120, top: 0),
           itemCount: 3,
           itemBuilder: (context, index) {
             return Card(

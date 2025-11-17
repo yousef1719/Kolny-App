@@ -7,101 +7,50 @@ import 'package:hungry_app/shared/custom_text.dart';
 class ToppingCard extends StatelessWidget {
   const ToppingCard({
     super.key,
-    required this.imagePath,
+    required this.imageUrl,
     required this.title,
     required this.onAdd,
+    required this.color,
   });
-  final String imagePath;
+  final String imageUrl;
   final String title;
   final VoidCallback onAdd;
 
+  final Color color;
+
   @override
   Widget build(BuildContext context) {
-    final double cardWidth = screenWidth(context) * 0.27;
-    final double cardHeight = screenHeight(context) * 0.19;
-    return SizedBox(
-      width: cardWidth,
-      height: cardHeight,
-      child: Stack(
-        clipBehavior: Clip.none,
+    // final double cardWidth = screenWidth(context) * 0.27;
+    // final double cardHeight = screenHeight(context) * 0.19;
+    return GestureDetector(
+      onTap: onAdd,
+      child: Column(
         children: [
-          Align(
-            alignment: Alignment.bottomCenter,
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
             child: Container(
-              height: cardHeight * 0.5,
-              decoration: BoxDecoration(
-                color: AppColors.primary,
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(15),
-                  bottomLeft: Radius.circular(15),
-                ),
-              ),
-              padding: EdgeInsets.only(
-                left: paddingLeft(context, 10),
-                right: paddingRight(context, 10),
-                top: paddingTop(context, 30),
-                bottom: paddingBottom(context, 8),
-              ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              color: color,
+              padding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              child: Column(
                 children: [
+                  Image.network(
+                    imageUrl,
+                    fit: BoxFit.contain,
+                    width: 80,
+                    height: 50,
+                  ),
+
+                  Gap(10),
+
                   CustomText(
                     text: title,
-                    fontSize: 12,
-                    weight: FontWeight.w500,
-                    color: Colors.white,
+                    color: Colors.black,
+                    fontSize: 14,
+                    weight: FontWeight.w600,
                   ),
-                  Gap(screenWidth(context) * 0.01),
-                  GestureDetector(
-                    onTap: onAdd,
-                    child: Container(
-                      width: screenWidth(context) * 0.07,
-                      height: screenWidth(context) * 0.07,
-                      decoration: BoxDecoration(
-                        color: Colors.black54,
-                        shape: BoxShape.circle,
-                      ),
-                      child: const Icon(
-                        Icons.add,
-                        color: Colors.white,
-                        size: 15,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Positioned(
-            bottom: cardHeight * 0.35,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: cardHeight * 0.6,
-              decoration: BoxDecoration(
-                color: AppColors.secondary,
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(15),
-                  topRight: Radius.circular(15),
-                  bottomLeft: Radius.circular(15),
-                  bottomRight: Radius.circular(15),
-                ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 6,
-                    offset: const Offset(3, -3),
-                  ),
-                ],
-              ),
 
-              child: Center(
-                child: Image.asset(
-                  imagePath,
-                  width: cardWidth * 0.62,
-                  fit: BoxFit.cover,
-                ),
+                  Gap(5),
+                ],
               ),
             ),
           ),

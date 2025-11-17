@@ -42,9 +42,17 @@ class _CartViewState extends State<CartView> {
     return Scaffold(
       extendBody: true,
       appBar: AppBar(
-        toolbarHeight: 0,
+        toolbarHeight: screenHeight(context) * 0.08,
         backgroundColor: AppColors.secondary,
+        forceMaterialTransparency: true,
         elevation: 0,
+        title: Center(
+          child: CustomText(
+            text: 'My Cart',
+            fontSize: 18,
+            weight: FontWeight.bold,
+          ),
+        ),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: screenWidth(context) * 0.04),

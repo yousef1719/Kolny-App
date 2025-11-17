@@ -27,6 +27,7 @@ class CardItem extends StatelessWidget {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 20, sigmaY: 500),
         child: Container(
+          height: screenHeight(context) * 0.25,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: Colors.white,
@@ -54,41 +55,37 @@ class CardItem extends StatelessWidget {
               children: [
                 Expanded(
                   child: SizedBox(
-                    height: screenWidth(context) * 0.27 + 10,
+                    width: double.infinity,
+
                     child: Stack(
-                      alignment: AlignmentGeometry.bottomCenter,
                       clipBehavior: Clip.none,
                       children: [
                         Positioned(
-                          bottom: 0,
+                          bottom: -8,
+                          right: 0,
+                          left: 0,
                           child: Image.asset(
                             'assets/icon/shadow.png',
-                            width: screenWidth(context) * 0.25,
+                            color: Colors.black38,
                           ),
                         ),
-                        Positioned(
-                          bottom: 6,
-                          child: Center(
-                            child: Image.asset(
-                              image,
-                              fit: BoxFit.contain,
-                              width: screenWidth(context) * 0.27,
-                            ),
-                          ),
+                        Center(
+                          child: Image.network(image, width: 120, height: 135),
                         ),
                       ],
                     ),
                   ),
                 ),
-
                 Gap(screenHeight(context) * 0.015),
                 CustomText(
+                  maxLines: 1,
                   text: text,
                   fontSize: 12,
                   weight: FontWeight.bold,
                   color: AppColors.textColor,
                 ),
                 CustomText(
+                  maxLines: 2,
                   text: desc,
                   fontSize: 10,
                   color: AppColors.textColor,

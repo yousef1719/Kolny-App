@@ -9,6 +9,7 @@ class CustomText extends StatelessWidget {
     this.weight,
     this.responsive = true,
     this.textAlign,
+    this.maxLines,
   });
 
   final String text;
@@ -17,6 +18,7 @@ class CustomText extends StatelessWidget {
   final FontWeight? weight;
   final bool responsive;
   final TextAlign? textAlign;
+  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class CustomText extends StatelessWidget {
     }
 
     return Text(
-      maxLines: 3,
+      maxLines: maxLines ?? 3,
       overflow: TextOverflow.ellipsis,
       textScaler: MediaQuery.of(context).textScaler,
       text,

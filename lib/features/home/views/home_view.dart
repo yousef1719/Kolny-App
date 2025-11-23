@@ -53,6 +53,7 @@ class _HomeViewState extends State<HomeView> {
     user = authRepo.currentUser;
   }
 
+  @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusScope.of(context).unfocus(),
@@ -158,6 +159,7 @@ class _HomeViewState extends State<HomeView> {
                               MaterialPageRoute(
                                 builder: (context) {
                                   return ProductDetailsView(
+                                    productId: product.id,
                                     productImage: product.image,
                                   );
                                 },

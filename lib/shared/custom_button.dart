@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:hungry_app/core/constants/app_colors.dart';
 import 'package:hungry_app/core/constants/size_config.dart';
 import 'package:hungry_app/shared/custom_text.dart';
@@ -12,6 +13,8 @@ class CustomButton extends StatelessWidget {
     this.height,
     this.color,
     this.radius,
+    this.widget,
+    this.gab,
   });
   final String text;
   final Function()? onTap;
@@ -19,6 +22,8 @@ class CustomButton extends StatelessWidget {
   final double? height;
   final Color? color;
   final double? radius;
+  final Widget? widget;
+  final double? gab;
 
   @override
   Widget build(BuildContext context) {
@@ -35,13 +40,19 @@ class CustomButton extends StatelessWidget {
           borderRadius: BorderRadius.circular(radius ?? 10),
           color: color ?? AppColors.primary,
         ),
-        child: Center(
-          child: CustomText(
-            text: text,
-            fontSize: 14,
-            color: Colors.white,
-            weight: FontWeight.w500,
-          ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            CustomText(
+              text: text,
+              fontSize: 14,
+              color: Colors.white,
+              weight: FontWeight.w500,
+            ),
+            Gap(gab ?? 0),
+            widget ?? SizedBox.shrink(),
+          ],
         ),
       ),
     );
